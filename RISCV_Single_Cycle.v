@@ -1,39 +1,39 @@
 module RISCV_Single_Cycle(
-    input logic clk,
-    input logic rst_n,
-    output logic [31:0] PC_out_top,
-    output logic [31:0] Instruction_out_top
+    input wire clk,
+    input wire rst_n,
+    output reg [31:0] PC_out_top,
+    output wire [31:0] Instruction_out_top
 );
 
     // Program Counter
-    logic [31:0] PC_next;
+    wire [31:0] PC_next;
 
     // Wires for instruction fields
-    logic [4:0] rs1, rs2, rd;
-    logic [2:0] funct3;
-    logic [6:0] opcode, funct7;
+    wire [4:0] rs1, rs2, rd;
+    wire [2:0] funct3;
+    wire [6:0] opcode, funct7;
 
     // Immediate value
-    logic [31:0] Imm;
+    wire [31:0] Imm;
 
     // Register file wires
-    logic [31:0] ReadData1, ReadData2, WriteData;
+    wire [31:0] ReadData1, ReadData2, WriteData;
 
     // ALU
-    logic [31:0] ALU_in2, ALU_result;
-    logic ALUZero;
+    wire [31:0] ALU_in2, ALU_result;
+    wire ALUZero;
 
     // Data Memory
-    logic [31:0] MemReadData;
+    wire [31:0] MemReadData;
 
     // Control signals
-    logic [1:0] ALUSrc;
-    logic [3:0] ALUCtrl;
-    logic Branch, MemRead, MemWrite, MemToReg;
-    logic RegWrite, PCSel;
+    wire [1:0] ALUSrc;
+    wire [3:0] ALUCtrl;
+    wire Branch, MemRead, MemWrite, MemToReg;
+    wire RegWrite, PCSel;
 
     // PC update
-    always_ff @(posedge clk or negedge rst_n) begin
+    always @(posedge clk or negedge rst_n) begin
         if (!rst_n)
             PC_out_top <= 32'b0;
         else

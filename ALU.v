@@ -1,9 +1,9 @@
 module ALU (
-    input  logic [31:0] A,
-    input  logic [31:0] B,
-    input  logic [3:0]  ALUOp,
-    output logic [31:0] Result,
-    output logic Zero
+    input  wire [31:0] A,
+    input  wire [31:0] B,
+    input  wire [3:0]  ALUOp,
+    output reg [31:0] Result,
+    output wire Zero
 );
     always @(*) begin
         case (ALUOp)

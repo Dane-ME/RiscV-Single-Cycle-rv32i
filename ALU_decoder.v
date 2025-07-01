@@ -2,9 +2,9 @@ module ALU_decoder(
     input  [1:0] alu_op,
     input  [2:0] funct3,
     input        funct7b5,
-    output logic [3:0] alu_control
+    output reg [3:0] alu_control
 );
-    always_comb begin
+    always @(*) begin
         alu_control = 4'b0010; 
         case (alu_op)
             2'b00: alu_control = 4'b0010; 

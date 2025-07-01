@@ -1,11 +1,11 @@
 module Branch_Comp (
-    input  logic [31:0] A,
-    input  logic [31:0] B,
-    input  logic Branch,
-    input  logic [2:0] funct3,
-    output logic BrTaken
+    input  wire [31:0] A,
+    input  wire [31:0] B,
+    input  wire Branch,
+    input  wire [2:0] funct3,
+    output reg BrTaken
 );
-    always_comb begin
+    always @(*) begin
         BrTaken = 0;
         if (Branch) begin
             case (funct3)

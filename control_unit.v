@@ -1,16 +1,16 @@
 module control_unit (
-    input  logic [6:0] opcode,
-    input  logic [2:0] funct3,
-    input  logic [6:0] funct7,
-    output logic [1:0] ALUSrc,
-    output logic [3:0] ALUOp,
-    output logic Branch,
-    output logic MemRead,
-    output logic MemWrite,
-    output logic MemToReg,
-    output logic RegWrite
+    input  wire [6:0] opcode,
+    input  wire [2:0] funct3,
+    input  wire [6:0] funct7,
+    output reg [1:0] ALUSrc,
+    output reg [3:0] ALUOp,
+    output reg Branch,
+    output reg MemRead,
+    output reg MemWrite,
+    output reg MemToReg,
+    output reg RegWrite
 );
-    always_comb begin
+    always @(*) begin
         ALUSrc   = 2'b00;
         ALUOp    = 4'b0000;
         Branch   = 0;

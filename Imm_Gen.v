@@ -1,6 +1,6 @@
 module Imm_Gen (
-    input  logic [31:0] inst,
-    output logic [31:0] imm_out
+    input  wire [31:0] inst,
+    output reg [31:0] imm_out
 );
     wire [6:0] opcode = inst[6:0];
 
